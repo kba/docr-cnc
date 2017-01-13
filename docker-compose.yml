@@ -1,0 +1,11 @@
+version: '2'
+services:
+  docr-worker-app:
+    image: 'kbai/docr-worker'
+    build: 'repo/docr-worker'
+    port: '4001:4001'
+    volume:
+      # We need access to the host's docker container to run
+      # transient worker containers
+      '/var/run/docker.sock:/var/run/docker.sock'
+      '/usr/bin/docker:/usr/bin/docker'
